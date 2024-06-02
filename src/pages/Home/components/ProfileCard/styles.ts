@@ -5,7 +5,7 @@ export const Card = styled.div`
   gap: 2rem;
   width: 100%;
   background-color: ${(props) => props.theme['slate-800']};
-  padding: 2rem 2rem 2rem 2.5rem;
+  padding: 2rem;
   margin-bottom: 4.5rem;
   border-radius: 10px;
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.2);
