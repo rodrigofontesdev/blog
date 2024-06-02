@@ -5,51 +5,78 @@ import {
   faUserGroup,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useEffect, useState } from 'react'
+import { api } from '../../../../lib/axios'
 import { Avatar, Bio, Card, Name, Network } from './styles'
 
+interface Profile {
+  avatar: string
+  name: string | null
+  username: string
+  bio: string | null
+  profileUrl: string
+  followers: number
+  company: string | null
+}
+
 export function ProfileCard() {
+  const [profile, setProfile] = useState<Profile | null>(null)
+
+  useEffect(() => {
+    async function getUser() {
+      const response = await api.get(`/users/${import.meta.env.VITE_GITHUB_USERNAME}`)
+      const data = response.data
+
+      setProfile({
+        avatar: data.avatar_url,
+        name: data.name,
+        username: data.login,
+        bio: data.bio,
+        profileUrl: data.html_url,
+        followers: data.followers,
+        company: data.company,
+      })
+    }
+
+    getUser()
+  }, [])
+
   return (
     <Card>
       <Avatar>
-        <img
-          src="https://avatars.githubusercontent.com/u/17281370"
-          alt="Foto de perfil do Github de Cameron Williamson"
-        />
+        <img src={profile?.avatar} alt={`Foto de perfil do Github de ${profile?.name}`} />
       </Avatar>
 
       <Bio>
         <Name>
-          <h1>Cameron Williamson</h1>
+          <h1>{profile?.name ?? profile?.username}</h1>
 
-          <a href="#" target="_blank">
+          <a href={profile?.profileUrl} target="_blank">
             GITHUB <FontAwesomeIcon icon={faArrowUpRightFromSquare} fontSize={12} />
           </a>
         </Name>
 
-        <p>
-          Tristique volutpat pulvinar vel massa, pellentesque egestas. Eu viverra massa quam
-          dignissim aenean malesuada suscipit. Nunc, volutpat pulvinar vel mass.
-        </p>
+        <p>{profile?.bio ?? null}</p>
 
         <Network>
           <li>
-            <a href="#" target="_blank">
+            <a href={`${profile?.profileUrl}?tab=repositories`} target="_blank">
               <FontAwesomeIcon icon={faGithub} />
-              cameronwll
+              {profile?.username}
             </a>
           </li>
 
-          <li>
-            <a href="#" target="_blank">
+          {profile?.company && (
+            <li>
               <FontAwesomeIcon icon={faBuilding} />
-              Rocketseat
-            </a>
-          </li>
+              {profile?.company}
+            </li>
+          )}
 
           <li>
-            <a href="#" target="_blank">
+            <a href={`${profile?.profileUrl}?tab=followers`} target="_blank">
               <FontAwesomeIcon icon={faUserGroup} />
-              32 seguidores
+              {profile?.followers} {profile?.followers === 1 ? 'seguidor' : 'seguidores'}
             </a>
           </li>
         </Network>

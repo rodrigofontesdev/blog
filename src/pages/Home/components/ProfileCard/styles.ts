@@ -68,6 +68,7 @@ export const Network = styled.ul`
   margin-top: 1.5rem;
 
   li {
+    color: ${(props) => props.theme['slate-200']};
     list-style: none;
 
     a {
@@ -79,11 +80,11 @@ export const Network = styled.ul`
         border-bottom-color: ${(props) => props.theme['slate-200']};
         transition: border 400ms;
       }
+    }
 
-      svg {
-        color: ${(props) => props.theme['slate-500']};
-        margin-right: 0.5rem;
-      }
+    svg {
+      color: ${(props) => props.theme['slate-500']};
+      margin-right: 0.5rem;
     }
   }
 `
