@@ -7,7 +7,14 @@ export const Card = styled.article`
   width: 100%;
   background-color: ${(props) => props.theme['slate-700']};
   padding: 2.375rem 2rem;
+  border: 2px solid transparent;
   border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    border-color: ${(props) => props.theme['slate-500']};
+    transition: border 400ms;
+  }
 `
 
 export const Heading = styled.header`
