@@ -5,7 +5,6 @@ import headerBackgroundImg from '../../assets/header-background.png'
 export const HeaderContainer = styled.header`
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 100%;
   height: 296px;
   position: absolute;
@@ -15,6 +14,7 @@ export const HeaderContainer = styled.header`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  padding-top: 4rem;
   padding-right: 2rem;
   padding-left: 2rem;
   z-index: -1;
