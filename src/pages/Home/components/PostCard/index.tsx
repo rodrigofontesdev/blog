@@ -1,18 +1,32 @@
-import { Card, Heading } from './styles'
+import { formatDistanceToNow } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
+import Markdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
+import { Body, Card, Title } from './styles'
 
-export function PostCard() {
+interface PostCardProps {
+  title: string
+  body: string | null
+  createdAt: string
+}
+
+export function PostCard({ title, body, createdAt }: PostCardProps) {
   return (
     <Card>
-      <Heading>
-        <h3>JavaScript data types and data structures</h3>
-        <span>Há 1 dia</span>
-      </Heading>
+      <Title>
+        <span>
+          {formatDistanceToNow(new Date(createdAt), {
+            addSuffix: true,
+            locale: ptBR,
+          })}
+        </span>
 
-      <p>
-        Programming languages all have built-in data structures, but these often differ from one
-        language to another. This article attempts to list the built-in data structures available
-        in...
-      </p>
+        {title}
+      </Title>
+
+      <Body>
+        <Markdown remarkPlugins={[remarkGfm]}>{body}</Markdown>
+      </Body>
     </Card>
   )
 }
