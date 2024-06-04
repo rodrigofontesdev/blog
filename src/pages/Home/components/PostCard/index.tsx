@@ -25,7 +25,9 @@ export function PostCard({ title, body, createdAt }: PostCardProps) {
       </Title>
 
       <Body>
-        <Markdown remarkPlugins={[remarkGfm]}>{body}</Markdown>
+        <Markdown remarkPlugins={[remarkGfm]} disallowedElements={['a']} unwrapDisallowed>
+          {body}
+        </Markdown>
       </Body>
     </Card>
   )
