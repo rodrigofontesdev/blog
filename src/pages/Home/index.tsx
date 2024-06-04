@@ -22,6 +22,7 @@ const repoName = import.meta.env.VITE_GITHUB_REPO
 
 export function Home() {
   const [issues, setIssues] = useState<IssueResponse[]>([])
+  const [total, setTotal] = useState(0)
   const { register, watch } = useForm<SearchFormData>({
     defaultValues: {
       search: '',
@@ -51,6 +52,7 @@ export function Home() {
           }
         })
       )
+      setTotal(data.total_count)
     }
 
     getIssues()
@@ -64,7 +66,9 @@ export function Home() {
         <Posts>
           <header>
             <h2>Publicações</h2>
-            <span>6 publicações</span>
+            <span>
+              {total} {total === 1 ? 'publicação' : 'publicações'}
+            </span>
           </header>
 
           <SearchForm>
