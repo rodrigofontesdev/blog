@@ -7,7 +7,7 @@ import { ProfileCard } from './components/ProfileCard'
 import { Container, Posts, PostsGrid, SearchForm } from './styles'
 
 export interface IssueResponse {
-  id: number
+  number: number
   title: string
   body: string | null
   created_at: string
@@ -45,7 +45,7 @@ export function Home() {
       setIssues(
         data.items.map((issue: IssueResponse) => {
           return {
-            id: issue.id,
+            number: issue.number,
             title: issue.title,
             body: issue.body,
             created_at: issue.created_at,
@@ -77,7 +77,7 @@ export function Home() {
 
           <PostsGrid>
             {issues.map((issue: IssueResponse) => (
-              <Link to={`/post/${issue.id}`} key={issue.id}>
+              <Link to={`/post/${issue.number}`} key={issue.number}>
                 <PostCard title={issue.title} body={issue.body} createdAt={issue.created_at} />
               </Link>
             ))}
