@@ -13,7 +13,10 @@ export const Posts = styled.section`
 
   > header {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
+    align-items: baseline;
+    column-gap: 0.5rem;
     margin-bottom: 0.75rem;
 
     h2 {
@@ -33,7 +36,7 @@ export const SearchForm = styled.form`
   margin-bottom: 3rem;
 
   input {
-    flex: 1;
+    width: 100%;
     background-color: ${(props) => props.theme['slate-950']};
     color: ${(props) => props.theme['slate-300']};
     font-size: 1rem;
@@ -55,11 +58,11 @@ export const SearchForm = styled.form`
 
 export const PostsGrid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 2rem;
 
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
   }
 
   > a {
