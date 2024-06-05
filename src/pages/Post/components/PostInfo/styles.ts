@@ -63,6 +63,7 @@ export const Metadata = styled.ul`
   row-gap: 0.75rem;
 
   li {
+    color: ${(props) => props.theme['slate-400']};
     list-style: none;
 
     a {
@@ -74,11 +75,11 @@ export const Metadata = styled.ul`
         border-bottom-color: ${(props) => props.theme['slate-400']};
         transition: border 400ms;
       }
+    }
 
-      svg {
-        color: ${(props) => props.theme['slate-500']};
-        margin-right: 0.5rem;
-      }
+    svg {
+      color: ${(props) => props.theme['slate-500']};
+      margin-right: 0.5rem;
     }
   }
 `
