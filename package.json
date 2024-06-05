@@ -22,12 +22,16 @@
     "react-hook-form": "^7.51.5",
     "react-markdown": "^9.0.1",
     "react-router-dom": "^6.23.1",
+    "react-syntax-highlighter": "^15.5.0",
+    "remark-breaks": "^4.0.0",
     "remark-gfm": "^4.0.0",
+    "remark-github": "^12.0.0",
     "styled-components": "^6.1.11"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
+    "@types/react-syntax-highlighter": "^15.5.13",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "@vitejs/plugin-react": "^4.2.1",
