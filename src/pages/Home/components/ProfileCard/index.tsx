@@ -44,7 +44,7 @@ export function ProfileCard() {
   return (
     <Card>
       <Avatar>
-        <img src={profile?.avatar} alt={`Foto de perfil do Github de ${profile?.name}`} />
+        <img src={profile?.avatar} alt={`Foto de perfil do GitHub de ${profile?.name}`} />
       </Avatar>
 
       <Bio>

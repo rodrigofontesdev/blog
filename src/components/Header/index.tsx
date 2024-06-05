@@ -7,7 +7,7 @@ export function Header() {
   return (
     <HeaderContainer>
       <Link to="/">
-        <img src={logoImg} alt="Github Blog" />
+        <img src={logoImg} alt="GitHub Blog" />
       </Link>
     </HeaderContainer>
   )
