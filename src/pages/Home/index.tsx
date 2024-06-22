@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { api } from '../../lib/axios'
 import { PostCard } from './components/PostCard'
 import { ProfileCard } from './components/ProfileCard'
-import { Container, Posts, PostsGrid, SearchForm } from './styles'
+import { Container, Posts, PostsEmpty, PostsGrid, SearchForm } from './styles'
 
 export interface IssueResponse {
   number: number
@@ -75,13 +75,17 @@ export function Home() {
             <input type="search" placeholder="Buscar conteúdo" {...register('search')} />
           </SearchForm>
 
-          <PostsGrid>
-            {issues.map((issue: IssueResponse) => (
-              <Link to={`/post/${issue.number}`} key={issue.number}>
-                <PostCard title={issue.title} body={issue.body} createdAt={issue.created_at} />
-              </Link>
-            ))}
-          </PostsGrid>
+          {issues.length > 0 ? (
+            <PostsGrid>
+              {issues.map((issue: IssueResponse) => (
+                <Link to={`/post/${issue.number}`} key={issue.number}>
+                  <PostCard title={issue.title} body={issue.body} createdAt={issue.created_at} />
+                </Link>
+              ))}
+            </PostsGrid>
+          ) : (
+            <PostsEmpty>Nenhuma publicação encontrada!</PostsEmpty>
+          )}
         </Posts>
       </Container>
     </main>

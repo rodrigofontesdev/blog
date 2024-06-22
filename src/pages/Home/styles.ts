@@ -69,3 +69,8 @@ export const PostsGrid = styled.div`
     all: unset;
   }
 `
+
+export const PostsEmpty = styled.span`
+  display: block;
+  text-align: center;
+`
