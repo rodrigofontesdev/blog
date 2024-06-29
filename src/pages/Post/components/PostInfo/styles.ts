@@ -66,6 +66,16 @@ export const Metadata = styled.ul`
     color: ${(props) => props.theme['slate-400']};
     list-style: none;
 
+    &:nth-of-type(2) {
+      span {
+        display: inline-block;
+
+        &::first-letter {
+          text-transform: uppercase;
+        }
+      }
+    }
+
     a {
       color: ${(props) => props.theme['slate-400']};
       text-decoration: none;

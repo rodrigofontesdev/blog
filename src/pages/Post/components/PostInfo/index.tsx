@@ -47,10 +47,12 @@ export function PostInfo({ title, url, comments, author, createdAt }: PostProps)
 
         <li>
           <FontAwesomeIcon icon={faCalendarDay} />{' '}
-          {formatDistanceToNow(new Date(createdAt), {
-            addSuffix: true,
-            locale: ptBR,
-          })}
+          <span>
+            {formatDistanceToNow(new Date(createdAt), {
+              addSuffix: true,
+              locale: ptBR,
+            })}
+          </span>
         </li>
 
         <li>
