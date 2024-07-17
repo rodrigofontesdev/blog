@@ -12,5 +12,5 @@ export const defaultTheme = {
   'slate-900': '#071422',
   'slate-950': '#040F1A',
 
-  'font-primary': '"Nunito", sans-serif',
+  'font-primary': '"Nunito", nunito-fallback',
 } as const
