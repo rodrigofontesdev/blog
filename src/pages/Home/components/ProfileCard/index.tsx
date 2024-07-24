@@ -6,6 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
+import { Skeleton } from '../../../../components/Skeleton'
 import { api } from '../../../../lib/axios'
 import { Avatar, Bio, Card, Name, Network } from './styles'
 
@@ -19,22 +20,28 @@ interface Profile {
   company: string | null
 }
 
+const repoOwner = import.meta.env.VITE_GITHUB_USERNAME
+
 export function ProfileCard() {
   const [profile, setProfile] = useState<Profile | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     async function getUser() {
-      const response = await api.get(`/users/${import.meta.env.VITE_GITHUB_USERNAME}`)
-      const data = response.data
+      await api.get(`/users/${repoOwner}`).then((response) => {
+        const data = response.data
 
-      setProfile({
-        avatar: data.avatar_url,
-        name: data.name,
-        username: data.login,
-        bio: data.bio,
-        profileUrl: data.html_url,
-        followers: data.followers,
-        company: data.company,
+        setProfile({
+          avatar: data.avatar_url,
+          name: data.name,
+          username: data.login,
+          bio: data.bio,
+          profileUrl: data.html_url,
+          followers: data.followers,
+          company: data.company,
+        })
+
+        setIsLoading(false)
       })
     }
 
@@ -43,42 +50,63 @@ export function ProfileCard() {
 
   return (
     <Card>
-      <Avatar>
-        <img src={profile?.avatar} alt={`Foto de perfil do GitHub de ${profile?.name}`} />
-      </Avatar>
+      {isLoading ? (
+        <Skeleton width={148} height={148} radii={10} />
+      ) : (
+        <Avatar>
+          <img
+            src={profile?.avatar}
+            alt={`Foto de perfil do GitHub de ${profile?.name}`}
+            width={148}
+            height={148}
+          />
+        </Avatar>
+      )}
 
       <Bio>
         <Name>
-          <h1>{profile?.name ?? profile?.username}</h1>
+          {isLoading ? (
+            <Skeleton width={320} height={31} />
+          ) : (
+            <>
+              <h1>{profile?.name ?? profile?.username}</h1>
 
-          <a href={profile?.profileUrl} target="_blank">
-            GITHUB <FontAwesomeIcon icon={faArrowUpRightFromSquare} fontSize={12} />
-          </a>
+              <a href={profile?.profileUrl} target="_blank">
+                GITHUB <FontAwesomeIcon icon={faArrowUpRightFromSquare} fontSize={12} />
+              </a>
+            </>
+          )}
         </Name>
 
-        <p>{profile?.bio ?? null}</p>
+        {isLoading ? <Skeleton width={620} height={25} /> : <p>{profile?.bio ?? null}</p>}
 
         <Network>
-          <li>
-            <a href={`${profile?.profileUrl}?tab=repositories`} target="_blank">
-              <FontAwesomeIcon icon={faGithub} />
-              {profile?.username}
-            </a>
-          </li>
+          {isLoading ? (
+            <Skeleton width={480} height={25} />
+          ) : (
+            <>
+              <li>
+                <a href={`${profile?.profileUrl}?tab=repositories`} target="_blank">
+                  <FontAwesomeIcon icon={faGithub} />
+                  {profile?.username}
+                </a>
+              </li>
 
-          {profile?.company && (
-            <li>
-              <FontAwesomeIcon icon={faBuilding} />
-              {profile?.company}
-            </li>
+              {profile?.company && (
+                <li>
+                  <FontAwesomeIcon icon={faBuilding} />
+                  {profile?.company}
+                </li>
+              )}
+
+              <li>
+                <a href={`${profile?.profileUrl}?tab=followers`} target="_blank">
+                  <FontAwesomeIcon icon={faUserGroup} />
+                  {profile?.followers} {profile?.followers === 1 ? 'seguidor' : 'seguidores'}
+                </a>
+              </li>
+            </>
           )}
-
-          <li>
-            <a href={`${profile?.profileUrl}?tab=followers`} target="_blank">
-              <FontAwesomeIcon icon={faUserGroup} />
-              {profile?.followers} {profile?.followers === 1 ? 'seguidor' : 'seguidores'}
-            </a>
-          </li>
         </Network>
       </Bio>
     </Card>
