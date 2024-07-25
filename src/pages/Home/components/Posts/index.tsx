@@ -2,6 +2,7 @@ import { faFaceFrownOpen } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Skeleton } from '../../../../components/Skeleton'
 import { api } from '../../../../lib/axios'
 import { PostCard } from '../PostCard'
 import { PostsContainer, PostsEmpty, PostsGrid, SearchForm } from './styles'
@@ -18,14 +19,13 @@ const repoName = import.meta.env.VITE_GITHUB_REPO
 
 export function Posts() {
   const [issues, setIssues] = useState<IssueResponse[]>([])
-  const [total, setTotal] = useState(0)
   const [search, setSearch] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
+
+  const total = issues.length
 
   useEffect(() => {
     async function getIssues() {
-      setIsLoading(true)
-
       await api
         .get(`/search/issues`, {
           params: {
@@ -35,17 +35,16 @@ export function Posts() {
           },
         })
         .then((response) => {
-          setTotal(response.data.total_count)
-          setIssues(
-            response.data.items.map((issue: IssueResponse) => {
-              return {
-                number: issue.number,
-                title: issue.title,
-                body: issue.body,
-                created_at: issue.created_at,
-              }
-            })
-          )
+          const items = response.data.items.map((issue: IssueResponse) => {
+            return {
+              number: issue.number,
+              title: issue.title,
+              body: issue.body,
+              created_at: issue.created_at,
+            }
+          })
+
+          setIssues(items)
         })
         .finally(() => setIsLoading(false))
     }
@@ -72,8 +71,12 @@ export function Posts() {
       </SearchForm>
 
       {isLoading ? (
-        'carregando...'
-      ) : issues.length > 0 ? (
+        <PostsGrid>
+          {Array.from<number>({ length: 12 }).map((i) => (
+            <Skeleton key={i} width={416} height={196} />
+          ))}
+        </PostsGrid>
+      ) : total > 0 ? (
         <PostsGrid>
           {issues.map((issue: IssueResponse) => (
             <Link to={`/post/${issue.number}`} key={issue.number}>
