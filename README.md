@@ -5,8 +5,8 @@
 
 # Prerequisites
 
-> [!IMPORTANT]
-> TODO
+- Node.js
+- Git
 
 # Getting Started
 
@@ -15,8 +15,9 @@
 
 # Features
 
-> [!IMPORTANT]
-> TODO
+- Retrieve profile avatar, follower count, name, and other relevant information about the repository owner
+- Retrieve and filter issues from a repository
+- Render issue content in a post format
 
 # I've Learned
 
@@ -25,8 +26,9 @@
 
 # Built With
 
-> [!IMPORTANT]
-> TODO
+- React
+- TypeScript
+- Styled Components
 
 # License
 
