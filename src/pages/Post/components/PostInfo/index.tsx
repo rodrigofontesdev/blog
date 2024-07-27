@@ -1,3 +1,4 @@
+import { Skeleton } from '@components/Skeleton'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import {
   faArrowUpRightFromSquare,
@@ -9,7 +10,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { formatDistanceToNow } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { Link } from 'react-router-dom'
-import { Skeleton } from '../../../../components/Skeleton'
 import { Card, Metadata, Navigation } from './styles'
 
 type PostProps = {

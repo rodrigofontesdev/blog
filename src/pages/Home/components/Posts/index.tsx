@@ -1,9 +1,9 @@
+import { Skeleton } from '@components/Skeleton'
 import { faFaceFrownOpen } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { api } from '@libs/axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Skeleton } from '../../../../components/Skeleton'
-import { api } from '../../../../lib/axios'
 import { PostCard } from '../PostCard'
 import { PostsContainer, PostsEmpty, PostsGrid, SearchForm } from './styles'
 

@@ -1,8 +1,8 @@
+import { DefaultLayout } from '@layouts/DefaultLayout'
+import { Error } from '@pages/Error'
+import { Home } from '@pages/Home'
+import { Post } from '@pages/Post'
 import { createBrowserRouter } from 'react-router-dom'
-import { DefaultLayout } from '../layout/DefaultLayout'
-import { Error } from '../pages/Error'
-import { Home } from '../pages/Home'
-import { Post } from '../pages/Post'
 
 export const router = createBrowserRouter([
   {

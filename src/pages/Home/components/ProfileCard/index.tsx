@@ -1,3 +1,4 @@
+import { Skeleton } from '@components/Skeleton'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import {
   faArrowUpRightFromSquare,
@@ -5,9 +6,8 @@ import {
   faUserGroup,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { api } from '@libs/axios'
 import { useEffect, useState } from 'react'
-import { Skeleton } from '../../../../components/Skeleton'
-import { api } from '../../../../lib/axios'
 import { Avatar, Bio, Card, Name, Network } from './styles'
 
 type Profile = {

@@ -1,7 +1,7 @@
+import { Header } from '@components/Header'
 import { faHouse } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link, isRouteErrorResponse, useRouteError } from 'react-router-dom'
-import { Header } from '../../components/Header'
 import { Container, ErrorMessage } from './styles'
 
 export function Error() {
