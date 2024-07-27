@@ -1,25 +1,19 @@
 import styled from 'styled-components'
 
-import headerBackgroundImg from '../../assets/header-background.png'
+import backgroundImg from '../../assets/header-background.png'
 
 export const HeaderContainer = styled.header`
+  height: max(200px, 18.5rem);
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: 296px;
+  align-items: start;
   position: absolute;
-  top: 0;
-  left: 0;
-  background-image: url(${headerBackgroundImg});
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding-top: 4rem;
-  padding-right: 2rem;
-  padding-left: 2rem;
+  inset: 0 0 auto 0;
   z-index: -1;
+  background: url(${backgroundImg}) left/cover no-repeat;
+  padding: 4rem 2rem 0;
 
-  @media (max-width: 1024px) {
-    background-position: left;
+  @media (min-width: 1024px) {
+    background-position: center;
   }
 `
