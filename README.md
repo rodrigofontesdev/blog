@@ -49,8 +49,10 @@ To track any public GitHub repository, specify the desired username and reposito
 
 ## I've Learned
 
-> [!IMPORTANT]
-> TODO
+- Render Markdown content as HTML using [react-markdown](https://github.com/remarkjs/react-markdown)
+- Prevent layout shifts by loading web fonts optimally
+- Enhance user experience by displaying placeholders during content loading
+- Implement strategies to significantly reduce Cumulative Layout Shift (CLS)
 
 ## Built With
 
