@@ -3,16 +3,11 @@ import styled from 'styled-components'
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
   background-color: ${(props) => props.theme['slate-800']};
   padding: 2rem;
   margin-bottom: 2.5rem;
   border-radius: 10px;
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.2);
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
 
   h1 {
     font-size: 1.5rem;
