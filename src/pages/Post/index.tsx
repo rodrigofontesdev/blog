@@ -11,7 +11,7 @@ import { api } from '../../lib/axios'
 import { PostInfo } from './components/PostInfo'
 import { Container, ContentLoading, PostBody } from './styles'
 
-interface Issue {
+type Issue = {
   title: string
   body: string
   url: string

@@ -4,7 +4,7 @@ import Markdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import { Body, Card, Title } from './styles'
 
-interface PostCardProps {
+type PostCardProps = {
   title: string
   body: string | null
   createdAt: string

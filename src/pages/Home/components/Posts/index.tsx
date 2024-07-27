@@ -7,7 +7,7 @@ import { api } from '../../../../lib/axios'
 import { PostCard } from '../PostCard'
 import { PostsContainer, PostsEmpty, PostsGrid, SearchForm } from './styles'
 
-export interface IssueResponse {
+export type IssueResponse = {
   number: number
   title: string
   body: string | null

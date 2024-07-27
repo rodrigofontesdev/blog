@@ -10,7 +10,7 @@ import { Skeleton } from '../../../../components/Skeleton'
 import { api } from '../../../../lib/axios'
 import { Avatar, Bio, Card, Name, Network } from './styles'
 
-interface Profile {
+type Profile = {
   avatar: string
   name: string | null
   username: string

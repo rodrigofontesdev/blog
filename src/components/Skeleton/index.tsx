@@ -1,6 +1,6 @@
 import { Container } from './styles'
 
-interface SkeletonProps {
+type SkeletonProps = {
   width: number
   height: number
   radii?: number

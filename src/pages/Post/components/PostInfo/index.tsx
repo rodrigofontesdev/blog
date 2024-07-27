@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom'
 import { Skeleton } from '../../../../components/Skeleton'
 import { Card, Metadata, Navigation } from './styles'
 
-interface PostProps {
+type PostProps = {
   title: string
   url: string
   comments: number
