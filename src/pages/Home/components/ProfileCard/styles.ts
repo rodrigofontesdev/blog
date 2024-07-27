@@ -2,22 +2,22 @@ import styled from 'styled-components'
 
 export const Card = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 2rem;
-  width: 100%;
   background-color: ${(props) => props.theme['slate-800']};
   padding: 2rem;
   margin-bottom: 4.5rem;
   border-radius: 10px;
   box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.2);
 
-  @media (max-width: 768px) {
-    flex-direction: column;
+  @media (min-width: 768px) {
+    flex-direction: row;
   }
 `
 
-export const Avatar = styled.figure`
-  width: 9.25rem;
-  height: 9.25rem;
+export const Avatar = styled.div`
+  width: min(9.25rem, 100%);
+  aspect-ratio: 1 / 1;
 
   img {
     border-radius: 8px;

@@ -50,18 +50,18 @@ export function ProfileCard() {
 
   return (
     <Card>
-      {isLoading ? (
-        <Skeleton width={148} height={148} radii={10} />
-      ) : (
-        <Avatar>
+      <Avatar>
+        {isLoading ? (
+          <Skeleton width={148} height={148} radii={10} />
+        ) : (
           <img
             src={profile?.avatar}
             alt={`Foto de perfil do GitHub de ${profile?.name}`}
-            width={148}
-            height={148}
+            width={400}
+            height={400}
           />
-        </Avatar>
-      )}
+        )}
+      </Avatar>
 
       <Bio>
         <Name>

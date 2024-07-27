@@ -72,8 +72,8 @@ export function Posts() {
 
       {isLoading ? (
         <PostsGrid>
-          {Array.from<number>({ length: 12 }).map((i) => (
-            <Skeleton key={i} width={416} height={196} />
+          {Array.from({ length: 12 }, (_, i) => i).map((k) => (
+            <Skeleton key={k} width={416} height={196} />
           ))}
         </PostsGrid>
       ) : total > 0 ? (
