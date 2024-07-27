@@ -3,12 +3,18 @@ import styled from 'styled-components'
 export const Container = styled.div`
   width: 100%;
   max-width: calc(54rem + 4rem);
-  margin: 28.125rem auto 0;
+  margin: max(150px, 13rem) auto 0;
   padding-right: 2rem;
   padding-left: 2rem;
 `
 
 export const ErrorMessage = styled.section`
+  background-color: ${(props) => props.theme['slate-800']};
+  padding: 4rem 2rem;
+  margin-bottom: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 28px 0 rgba(0, 0, 0, 0.2);
+
   display: flex;
   flex-direction: column;
   align-items: center;
