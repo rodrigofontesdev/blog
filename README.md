@@ -10,6 +10,7 @@ The purpose of this project was to learn about consuming an API using an HTTP cl
 
 - Node.js
 - Git
+- GitHub
 
 ## Getting Started
 
